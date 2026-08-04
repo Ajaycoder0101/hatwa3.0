@@ -788,8 +788,10 @@ function playDelivery(){
 }// =====================================
 // APPLY RESULT
 // =====================================
-playSound(result);
 function applyResult(result){
+
+    // Sound Play
+    playSound(result);
 
     balls++;
 
@@ -798,50 +800,44 @@ function applyResult(result){
         wickets++;
 
         resultText.innerHTML="❌ WICKET";
-
         commentary.innerHTML="Outstanding bowling!";
 
-    }
-
-    else{
+    }else{
 
         runs += result;
-
         resultText.innerHTML=result;
 
         switch(result){
 
             case 0:
-            commentary.innerHTML="Dot Ball";
-            break;
+                commentary.innerHTML="Dot Ball";
+                break;
 
             case 1:
-            commentary.innerHTML="Single";
-            break;
+                commentary.innerHTML="Single";
+                break;
 
             case 2:
-            commentary.innerHTML="Two Runs";
-            break;
+                commentary.innerHTML="Two Runs";
+                break;
 
             case 3:
-            commentary.innerHTML="Three Runs";
-            break;
+                commentary.innerHTML="Three Runs";
+                break;
 
             case 4:
-            commentary.innerHTML="FOUR!!";
-            break;
+                commentary.innerHTML="FOUR!!";
+                break;
 
             case 6:
-            commentary.innerHTML="SIX!!";
-            break;
-
+                commentary.innerHTML="SIX!!";
+                break;
         }
-
     }
 
     updateScore();
-
     checkMatch();
+}
 
 }// =====================================
 // SHOTS
