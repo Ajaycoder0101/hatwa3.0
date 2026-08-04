@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Hatwa Cricket Club</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="mobile">
+
+<header>
+
+<h1>🏏 HATWA CRICKET CLUB</h1>
+
+<p>Made By Ajay Yadav</p>
+
+</header>
+
+
+<div class="home">
+
+<img src="images/logo.png" class="logo">
+
+<h2>Welcome To Hatwa Cricket Club</h2>
+
+<p>
+Real Mobile Cricket Game
+</p>
+
+<button id="playBtn">
+
+▶ PLAY MATCH
+
+</button>
+
+</div>
+
+
+</div><!-- Player Selection -->
+
+<div class="players" id="playersPage">
+
+<h2>Select Players</h2>
+
+<div class="playerBox">
+
+<label>Batsman</label>
+
+<select id="batsman">
+
+<option>Ajay</option>
+<option>Umesh</option>
+<option>Bheru</option>
+<option>Atul</option>
+<option>Aman</option>
+<option>Sillu</option>
+<option>Ayush</option>
+<option>Alok</option>
+<option>Maneesh</option>
+<option>Ankush</option>
+<option>Shivram</option>
+<option>Akash</option>
+<option>Sonu</option>
+<option>Vipul</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div class="playerBox">
+
+<label>Bowler</label>
+
+<select id="bowler">
+
+<option>Umesh</option>
+<option>Ajay</option>
+<option>Bheru</option>
+<option>Atul</option>
+<option>Aman</option>
+<option>Sillu</option>
+<option>Ayush</option>
+<option>Alok</option>
+<option>Maneesh</option>
+<option>Ankush</option>
+<option>Shivram</option>
+<option>Akash</option>
+<option>Sonu</option>
+<option>Vipul</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+<button id="nextBtn">
+
+NEXT →
+
+</button>
+
+</div><!-- Toss Screen --><!-- Match Screen -->
+
+<div class="match" id="matchPage">
+
+<div class="scoreBar">
+
+<div>
+<h3>Runs</h3>
+<p id="runs">0/0</p>
+</div>
+
+<div>
+<h3>Overs</h3>
+<p id="overs">0.0</p>
+</div>
+
+<div>
+<h3>Target</h3>
+<p>30</p>
+</div>
+
+</div>
+
+<div class="ground">
+
+<div class="batsmanArea">
+
+<img src="images/batsman.png" class="playerImg">
+
+<h2 id="batName">Ajay</h2>
+
+</div>
+
+<div class="pitch">
+
+<div class="crease topCrease"></div>
+
+<div class="ball" id="ball"></div>
+
+<div class="crease bottomCrease"></div>
+
+</div>
+
+<div class="bowlerArea">
+
+<h2 id="bowlName">Umesh</h2>
+
+<img src="images/bowler.png" class="playerImg">
+
+<button id="bowlBtn">
+🥎 BOWL
+</button>
+
+</div>
+
+</div>
+
+<div class="shotButtons">
+
+<button>DEFEND</button>
+
+<button>DRIVE</button>
+
+<button>PULL</button>
+
+<button>LOFT</button>
+
+</div>
+
+</div>
+
+<div class="toss" id="tossPage">
+
+<h2>🪙 TOSS</h2>
+
+<p>Choose Head or Tail</p>
+
+<div class="coin">🪙</div>
+
+<div class="tossButtons">
+
+<button id="headBtn">HEAD</button>
+
+<button id="tailBtn">TAIL</button>
+
+</div>
+
+<h3 id="tossResult"></h3>
+
+<button id="startBtn" style="display:none;">
+🏏 START MATCH
+</button>
+
+</div><!-- Match Setup -->
+<div id="matchSetup" class="screen">
+
+    <h2>Select Overs</h2>
+
+    <div class="overs-box">
+        <button class="overBtn" data-over="2">2 Overs</button>
+        <button class="overBtn" data-over="5">5 Overs</button>
+        <button class="overBtn" data-over="10">10 Overs</button>
+        <button class="overBtn" data-over="20">20 Overs</button>
+    </div>
+
+    <br>
+
+    <button id="startMatchBtn">Start Match</button>
+    <button id="backHomeBtn">⬅ Back</button>
+
+</div><div class="scoreboard">
+
+<h2>HATWA CRICKET CLUB</h2>
+
+<p>Innings :
+<span id="inningsText">1</span></p>
+
+<p>Runs :
+<span id="runs">0</span>/<span id="wickets">0</span></p>
+
+<p>Overs :
+<span id="overs">0.0</span></p>
+
+<p>Target :
+<span id="target">--</span></p>
+
+</div><div id="resultScreen" class="screen">
+
+<h1 id="winnerText"></h1>
+
+<button id="playAgain">
+Play Again
+</button>
+
+<button id="homeBtn">
+Home
+</button>
+
+</div><div class="commentaryBox">
+
+<h3 id="ballResult">
+Press BAT
+</h3>
+
+<p id="commentary">
+Match Started
+</p>
+
+</div>
+
+<button id="shotBtn">
+🏏 BAT
+</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
