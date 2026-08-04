@@ -1,242 +1,459 @@
-*{
+/* =====================================
+   HATWA CRICKET CLUB V2
+   Made By Ajay Yadav
+===================================== */
 
+/* RESET */
+
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial,Helvetica,sans-serif;
+}
 
+html{
+scroll-behavior:smooth;
 }
 
 body{
 
-background:#0b7d2b;
+background:#0b6e2d;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-height:100vh;
+overflow-x:hidden;
 
 }
 
-.mobile{
+/* APP */
+
+#app{
 
 width:100%;
-max-width:430px;
 
-height:100vh;
+max-width:480px;
 
-background:url(images/stadium.jpg);
+min-height:100vh;
 
-background-size:cover;
+margin:auto;
 
-background-position:center;
+background:#fff;
 
-display:flex;
+overflow:hidden;
 
-flex-direction:column;
+position:relative;
+
+box-shadow:0 0 20px rgba(0,0,0,.35);
 
 }
 
-header{
+/* SCREEN */
 
-background:rgba(0,0,0,.8);
+.screen{
 
-padding:15px;
+display:none;
+
+width:100%;
+
+min-height:100vh;
+
+animation:fade .35s;
+
+}
+
+.screen.active{
+
+display:block;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateX(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+/* HEADER */
+
+.header{
+
+background:#006400;
+
+color:#fff;
 
 text-align:center;
 
-color:white;
-
-}
-
-header h1{
-
-color:#FFD700;
-
-font-size:28px;
-
-}
-
-.home{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
 padding:20px;
-
-background:rgba(0,0,0,.35);
 
 }
 
 .logo{
 
-width:150px;
+width:90px;
 
-margin-bottom:20px;
+height:90px;
 
-}
-
-.home h2{
-
-color:white;
+object-fit:contain;
 
 margin-bottom:10px;
 
 }
 
-.home p{
+.header h1{
 
-color:white;
+font-size:28px;
 
-margin-bottom:30px;
-
-}
-
-#playBtn{
-
-width:250px;
-
-padding:15px;
-
-font-size:22px;
-
-background:#ff9800;
-
-color:white;
-
-border:none;
-
-border-radius:15px;
-
-cursor:pointer;
-
-font-weight:bold;
+margin-bottom:8px;
 
 }
 
-#playBtn:active{
+.header p{
 
-transform:scale(.95);
-
-}.players{
-
-display:none;
-
-flex:1;
-
-padding:25px;
-
-background:rgba(0,0,0,.45);
+opacity:.9;
 
 }
 
-.players h2{
+/* HOME */
+
+.homeBanner{
+
+width:100%;
+
+height:220px;
+
+overflow:hidden;
+
+}
+
+.homeBanner img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.homeContent{
+
+padding:20px;
 
 text-align:center;
 
-color:white;
+}
+
+.homeContent h2{
+
+color:#006400;
+
+margin-bottom:10px;
+
+}
+
+.homeContent p{
+
+line-height:1.7;
+
+color:#555;
 
 margin-bottom:25px;
 
 }
 
-.playerBox{
+/* MENU */
 
-margin-bottom:20px;
+.menu{
 
-}
+display:flex;
 
-.playerBox label{
+flex-direction:column;
 
-display:block;
-
-margin-bottom:8px;
-
-color:white;
-
-font-weight:bold;
+gap:15px;
 
 }
 
-.playerBox select{
+/* BUTTON */
 
-width:100%;
+button{
 
-padding:14px;
-
-font-size:18px;
-
-border:none;
-
-border-radius:10px;
-
-}
-
-#nextBtn{
-
-width:100%;
-
-padding:16px;
-
-font-size:20px;
-
-background:#4CAF50;
-
-color:white;
+height:55px;
 
 border:none;
 
 border-radius:12px;
 
-margin-top:20px;
+background:#0b8d38;
+
+color:white;
+
+font-size:18px;
 
 font-weight:bold;
 
-}/* Toss */
+cursor:pointer;
 
-.toss{
+transition:.25s;
 
-display:none;
+-webkit-tap-highlight-color:transparent;
 
-flex:1;
+}
 
-padding:30px;
+button:hover{
 
-background:rgba(0,0,0,.45);
+transform:scale(1.03);
+
+background:#00a844;
+
+}
+
+button:active{
+
+transform:scale(.95);
+
+}
+
+footer{
+
+padding:20px;
 
 text-align:center;
+
+color:#777;
+
+font-size:15px;
+
+}/* ==========================
+   TOP BAR
+========================== */
+
+.topBar{
+
+height:65px;
+
+background:#006400;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 15px;
 
 color:white;
 
 }
 
-.coin{
+.topBar h2{
 
-font-size:90px;
-
-margin:25px 0;
-
-animation:float 2s infinite;
+font-size:22px;
 
 }
 
-@keyframes float{
+.topBar button{
 
-0%{transform:translateY(0px);}
+width:90px;
 
-50%{transform:translateY(-10px);}
+height:42px;
 
-100%{transform:translateY(0px);}
+font-size:16px;
+
+}
+
+/* PLAYER */
+
+.playerArea{
+
+padding:20px;
+
+}
+
+.playerCard{
+
+background:#f3f3f3;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-bottom:25px;
+
+text-align:center;
+
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+}
+
+.playerPhoto{
+
+width:120px;
+
+height:120px;
+
+object-fit:contain;
+
+margin-bottom:15px;
+
+}
+
+.playerCard h3{
+
+margin-bottom:10px;
+
+color:#006400;
+
+}
+
+.playerCard select{
+
+width:100%;
+
+height:50px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+padding:10px;
+
+font-size:17px;
+
+}
+
+.bottomButtons{
+
+margin-top:25px;
+
+}
+
+.bottomButtons button{
+
+width:100%;
+
+}/* =====================================
+   MATCH SETUP SCREEN
+===================================== */
+
+.setupContainer{
+
+padding:20px;
+
+}
+
+.setupContainer h3{
+
+text-align:center;
+
+color:#006400;
+
+margin:20px 0 12px;
+
+font-size:22px;
+
+}
+
+.oversGrid,
+.difficultyGrid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+margin-bottom:25px;
+
+}
+
+.overBtn,
+.difficultyBtn{
+
+height:60px;
+
+font-size:18px;
+
+background:#f5f5f5;
+
+color:#222;
+
+border:2px solid #ddd;
+
+border-radius:12px;
+
+font-weight:bold;
+
+}
+
+.overBtn.active,
+.difficultyBtn.active{
+
+background:#0b8d38;
+
+color:white;
+
+border-color:#0b8d38;
+
+}
+
+.setupButtons{
+
+margin-top:30px;
+
+}
+
+.setupButtons button{
+
+width:100%;
+
+height:60px;
+
+font-size:20px;
+
+}
+
+/* =====================================
+   TOSS SCREEN
+===================================== */
+
+.tossContainer{
+
+padding:25px;
+
+text-align:center;
+
+}
+
+.coin{
+
+width:140px;
+
+height:140px;
+
+margin:20px auto;
+
+display:block;
+
+transition:.8s;
+
+}
+
+.coin.spin{
+
+transform:rotateY(1080deg);
 
 }
 
@@ -246,7 +463,7 @@ display:flex;
 
 gap:15px;
 
-margin-top:20px;
+margin:25px 0;
 
 }
 
@@ -254,241 +471,768 @@ margin-top:20px;
 
 flex:1;
 
-padding:16px;
-
-font-size:20px;
-
-border:none;
-
-border-radius:12px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-#headBtn{
-
-background:#ff9800;
-
-color:white;
-
-}
-
-#tailBtn{
-
-background:#2196f3;
-
-color:white;
+height:55px;
 
 }
 
 #tossResult{
 
-margin:25px 0;
+margin:20px 0;
 
-font-size:22px;
+color:#006400;
 
-font-weight:bold;
+font-size:24px;
+
+min-height:35px;
 
 }
 
-#startBtn{
+#batBowlChoice{
+
+margin-top:25px;
+
+}
+
+#batBowlChoice button{
 
 width:100%;
 
-padding:18px;
-
-font-size:22px;
-
-background:#4CAF50;
-
-color:white;
-
-border:none;
-
-border-radius:15px;
-
-font-weight:bold;
-
-}.match{
-
-display:none;
-
-flex:1;
-
-background:#0b7d2b;
+margin-top:12px;
 
 }
 
-.scoreBar{
+#startMatchBtn{
 
-display:flex;
+width:100%;
 
-justify-content:space-around;
+margin-top:25px;
 
-background:#004d1a;
-
-color:white;
-
-padding:10px;
-
-text-align:center;
-
-}
-
-.scoreBar div{
-
-background:rgba(255,255,255,.15);
-
-padding:10px;
-
-width:30%;
-
-border-radius:10px;
-
-}
-
-.ground{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:space-between;
-
-padding:15px;
-
-}
-
-.batsmanArea,
-.bowlerArea{
-
-text-align:center;
-
-color:white;
-
-}
-
-.playerImg{
-
-width:90px;
-
-height:90px;
-
-object-fit:contain;
-
-}
-
-.pitch{
-
-height:240px;
-
-background:#c89b63;
-
-border:4px solid white;
-
-border-radius:20px;
-
-position:relative;
-
-margin:10px 0;
-
-}
-
-.crease{
-
-position:absolute;
-
-left:5%;
-
-width:90%;
-
-height:4px;
-
-background:white;
-
-}
-
-.topCrease{
-
-top:20px;
-
-}
-
-.bottomCrease{
-
-bottom:20px;
-
-}
-
-.ball{
-
-width:20px;
-
-height:20px;
-
-background:red;
-
-border-radius:50%;
-
-position:absolute;
-
-left:50%;
-
-bottom:25px;
-
-transform:translateX(-50%);
-
-}
-
-#bowlBtn{
-
-margin-top:10px;
-
-padding:14px 30px;
-
-font-size:18px;
-
-border:none;
-
-border-radius:12px;
+height:60px;
 
 background:#ff9800;
 
+font-size:20px;
+
+}/* =====================================
+   LIVE MATCH SCREEN
+===================================== */
+
+.matchTopBar{
+
+height:65px;
+
+background:#006400;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 15px;
+
 color:white;
 
 }
 
-.shotButtons{
+.matchTopBar button{
+
+width:90px;
+
+height:42px;
+
+}
+
+.scoreBoard{
 
 display:grid;
 
-grid-template-columns:1fr 1fr;
+grid-template-columns:repeat(2,1fr);
 
 gap:10px;
 
 padding:15px;
 
-background:#004d1a;
+background:#f3f3f3;
 
 }
 
-.shotButtons button{
+.scoreCard{
 
-padding:15px;
+background:white;
+
+border-radius:12px;
+
+padding:12px;
+
+text-align:center;
+
+box-shadow:0 2px 6px rgba(0,0,0,.15);
+
+}
+
+.scoreCard h3{
+
+color:#006400;
 
 font-size:18px;
 
-border:none;
+margin-bottom:6px;
 
-border-radius:10px;
+}
 
-background:#2196f3;
+.scoreCard p{
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+.ground{
+
+position:relative;
+
+height:320px;
+
+overflow:hidden;
+
+background:#3da64d;
+
+}
+
+.stadiumBg{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.pitch{
+
+position:absolute;
+
+left:50%;
+
+top:40px;
+
+transform:translateX(-50%);
+
+width:90px;
+
+height:230px;
+
+background:#d8c18d;
+
+border-radius:8px;
+
+}
+
+.batsmanImage{
+
+position:absolute;
+
+bottom:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:90px;
+
+}
+
+.bowlerImage{
+
+position:absolute;
+
+top:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:90px;
+
+}
+
+.playerName{
+
+position:absolute;
+
+background:rgba(0,0,0,.7);
 
 color:white;
 
+padding:5px 12px;
+
+border-radius:20px;
+
+font-size:14px;
+
+}
+
+.batsmanName{
+
+bottom:0;
+
+left:50%;
+
+transform:translateX(-50%);
+
+}
+
+.bowlerName{
+
+top:110px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+}
+
+.ball{
+
+position:absolute;
+
+top:95px;
+
+left:50%;
+
+margin-left:-8px;
+
+width:16px;
+
+height:16px;
+
+background:red;
+
+border-radius:50%;
+
+display:none;
+
+}/* =====================================
+   COMMENTARY BOX
+===================================== */
+
+.commentaryBox{
+
+background:#ffffff;
+
+padding:18px;
+
+text-align:center;
+
+border-top:4px solid #0b8d38;
+
+box-shadow:0 -2px 8px rgba(0,0,0,.1);
+
+}
+
+#ballResult{
+
+font-size:28px;
+
+color:#006400;
+
+margin-bottom:10px;
+
+font-weight:bold;
+
+}
+
+#commentary{
+
+font-size:16px;
+
+color:#555;
+
+line-height:1.6;
+
+min-height:45px;
+
+}
+
+/* =====================================
+   SHOT BUTTONS
+===================================== */
+
+.shotPanel{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+padding:18px;
+
+background:#f3f3f3;
+
+}
+
+.shotBtn{
+
+height:60px;
+
+font-size:18px;
+
+font-weight:bold;
+
+border-radius:12px;
+
+background:#0b8d38;
+
+color:#fff;
+
+}
+
+.shotBtn:active{
+
+transform:scale(.95);
+
+}
+
+/* =====================================
+   MATCH INFO
+===================================== */
+
+.matchInfo{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:10px;
+
+padding:18px;
+
+background:#fff;
+
+}
+
+.matchInfo p{
+
+background:#f5f5f5;
+
+padding:12px;
+
+text-align:center;
+
+border-radius:10px;
+
+font-size:17px;
+
+font-weight:bold;
+
+color:#006400;
+
+}
+
+.matchInfo span{
+
+display:block;
+
+margin-top:5px;
+
+font-size:20px;
+
+color:#111;
+
+}/* =====================================
+   RESULT SCREEN
+===================================== */
+
+.resultContainer{
+
+padding:25px;
+
+text-align:center;
+
+}
+
+.trophyImage{
+
+width:170px;
+
+margin:20px auto;
+
+display:block;
+
+animation:zoom 1.2s infinite alternate;
+
+}
+
+@keyframes zoom{
+
+from{
+
+transform:scale(1);
+
+}
+
+to{
+
+transform:scale(1.08);
+
+}
+
+}
+
+#winnerTitle{
+
+font-size:32px;
+
+color:#006400;
+
+margin-bottom:20px;
+
+}
+
+.finalScoreBoard{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+margin:25px 0;
+
+}
+
+.resultCard{
+
+background:#f3f3f3;
+
+padding:18px;
+
+border-radius:12px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+}
+
+.resultCard h3{
+
+margin-bottom:10px;
+
+color:#006400;
+
+}
+
+.resultCard p{
+
+font-size:24px;
+
+font-weight:bold;
+
+}
+
+.resultButtons{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.resultButtons button{
+
+height:60px;
+
+font-size:20px;
+
+}/* =====================================
+   SETTINGS
+===================================== */
+
+.settingsContainer{
+
+padding:20px;
+
+}
+
+.settingItem{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:#f3f3f3;
+
+padding:18px;
+
+border-radius:12px;
+
+margin-bottom:15px;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+.settingItem input{
+
+transform:scale(1.5);
+
+}
+
+/* =====================================
+   ABOUT
+===================================== */
+
+.aboutContainer{
+
+padding:20px;
+
+text-align:center;
+
+}
+
+.aboutLogo{
+
+width:120px;
+
+margin-bottom:15px;
+
+}
+
+.aboutContainer h2{
+
+color:#006400;
+
+margin-bottom:10px;
+
+}
+
+.aboutContainer p{
+
+margin:10px 0;
+
+line-height:1.7;
+
+}
+
+.aboutContainer ul{
+
+text-align:left;
+
+margin-top:20px;
+
+padding-left:20px;
+
+}
+
+.aboutContainer li{
+
+margin:10px 0;
+
+}
+
+/* =====================================
+   HISTORY
+===================================== */
+
+.historyContainer{
+
+padding:20px;
+
+}
+
+.historyItem{
+
+background:#f3f3f3;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-bottom:12px;
+
+}/* =====================================
+   DARK MODE
+===================================== */
+
+body.dark{
+
+background:#111;
+
+}
+
+body.dark #app{
+
+background:#1b1b1b;
+
+color:#fff;
+
+}
+
+body.dark .playerCard,
+body.dark .scoreCard,
+body.dark .resultCard,
+body.dark .settingItem,
+body.dark .historyItem{
+
+background:#2b2b2b;
+
+color:#fff;
+
+}
+
+body.dark select{
+
+background:#333;
+
+color:white;
+
+border-color:#555;
+
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:480px){
+
+.header h1{
+
+font-size:24px;
+
+}
+
+button{
+
+font-size:16px;
+
+}
+
+.playerPhoto{
+
+width:95px;
+
+height:95px;
+
+}
+
+.batsmanImage,
+.bowlerImage{
+
+width:80px;
+
+}
+
+.trophyImage{
+
+width:140px;
+
+}
+
+}*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#111;
+}
+
+.container{
+    width:100%;
+    max-width:480px;
+    margin:auto;
+    padding:15px;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+button{
+    width:100%;
+    min-height:50px;
+    font-size:18px;
+    border-radius:10px;
+}
+
+input,select{
+    width:100%;
+    height:48px;
+    font-size:17px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.card{
+    padding:12px;
+}
+
+@media (max-width:480px){
+
+h1{
+    font-size:24px;
+}
+
+h2{
+    font-size:18px;
+}
+
+.stats{
+    grid-template-columns:1fr 1fr;
+}
+
+.card{
+    font-size:14px;
+}
+
+button{
+    font-size:16px;
+}
+
+.player{
+    width:110px;
+}
+
+}.player,
+.ball,
+.bat,
+.logo{
+    max-width:100%;
+    height:auto;
+}.controls{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.controls button{
+    height:60px;
+    font-size:20px;
+}button,input{
+    touch-action:manipulation;
 }
