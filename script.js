@@ -865,13 +865,14 @@ shotBtns.forEach(btn=>{
 // SOUND
 // =====================================
 
-const batSound=new Audio("sounds/bat.mp3");
+const batSound=new Audio("bat.mp3");
 
-const fourSound=new Audio("sounds/four.mp3");
+const fourSound=new Audio("four.mp3");
 
-const sixSound=new Audio("sounds/six.mp3");
+const sixSound=new Audio("six.mp3");
 
-const wicketSound=new Audio("sounds/wicket.mp3");
+const wicketSound=new Audio("wicket.mp3");
+const crowdSound=new Audio("crowd.mp3");
 
 function playSound(result){
 
