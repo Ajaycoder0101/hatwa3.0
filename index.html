@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Hatwa Cricket Club</title>
+<title>Hatwa Cricket Club V2</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,9 +13,20 @@ content="width=device-width, initial-scale=1.0">
 
 <body>
 
-<div class="mobile">
+<div id="app">
 
-<header>
+<!-- ========================= -->
+<!-- HOME SCREEN -->
+<!-- ========================= -->
+
+<section id="homeScreen" class="screen active">
+
+<header class="header">
+
+<img
+src="images/logo.png"
+class="logo"
+alt="Logo">
 
 <h1>🏏 HATWA CRICKET CLUB</h1>
 
@@ -25,37 +34,92 @@ content="width=device-width, initial-scale=1.0">
 
 </header>
 
+<div class="homeBanner">
 
-<div class="home">
+<img
+src="images/stadium.jpg"
+alt="Stadium">
 
-<img src="images/logo.png" class="logo">
+</div>
+
+<div class="homeContent">
 
 <h2>Welcome To Hatwa Cricket Club</h2>
 
 <p>
-Real Mobile Cricket Game
+
+Experience realistic mobile cricket with
+toss, batting, bowling, tournament,
+live scoreboard and commentary.
+
 </p>
 
+<div class="menu">
+
 <button id="playBtn">
+🏏 PLAY MATCH
+</button>
 
-▶ PLAY MATCH
+<button id="tournamentBtn">
+🏆 TOURNAMENT
+</button>
 
+<button id="historyBtn">
+📜 MATCH HISTORY
+</button>
+
+<button id="settingBtn">
+⚙ SETTINGS
+</button>
+
+<button id="aboutBtn">
+ℹ ABOUT
 </button>
 
 </div>
 
+</div>
 
-</div><!-- Player Selection -->
+<footer>
 
-<div class="players" id="playersPage">
+Version 2.0
+
+</footer>
+
+</section>
+
+<!-- ========================= -->
+<!-- PLAYER SCREEN -->
+<!-- ========================= -->
+
+<section id="playerScreen" class="screen">
+
+<div class="topBar">
+
+<button id="playerBackBtn">
+
+⬅ Back
+
+</button>
 
 <h2>Select Players</h2>
 
-<div class="playerBox">
+</div>
 
-<label>Batsman</label>
+<div class="playerArea">
 
-<select id="batsman">
+<div class="playerCard">
+
+<img
+src="images/batsman.png"
+class="playerPhoto"
+id="playerBatImg">
+
+<h3>Batsman</h3>
+
+<select id="batsmanSelect">
+
+<option value="">Select Batsman</option>
 
 <option>Ajay</option>
 <option>Umesh</option>
@@ -71,20 +135,26 @@ Real Mobile Cricket Game
 <option>Akash</option>
 <option>Sonu</option>
 <option>Vipul</option>
-<option>Other</option>
 
 </select>
 
 </div>
 
-<div class="playerBox">
+<div class="playerCard">
 
-<label>Bowler</label>
+<img
+src="images/bowler.png"
+class="playerPhoto"
+id="playerBowlImg">
 
-<select id="bowler">
+<h3>Bowler</h3>
 
-<option>Umesh</option>
+<select id="bowlerSelect">
+
+<option value="">Select Bowler</option>
+
 <option>Ajay</option>
+<option>Umesh</option>
 <option>Bheru</option>
 <option>Atul</option>
 <option>Aman</option>
@@ -97,173 +167,661 @@ Real Mobile Cricket Game
 <option>Akash</option>
 <option>Sonu</option>
 <option>Vipul</option>
-<option>Other</option>
 
 </select>
 
 </div>
 
-<button id="nextBtn">
+<div class="bottomButtons">
+
+<button id="playerNextBtn">
 
 NEXT →
 
 </button>
 
-</div><!-- Toss Screen --><!-- Match Screen -->
+</div>
 
-<div class="match" id="matchPage">
+</div>
 
-<div class="scoreBar">
+</section><!-- ========================= -->
+<!-- MATCH SETUP SCREEN -->
+<!-- ========================= -->
 
-<div>
+<section id="setupScreen" class="screen">
+
+<div class="topBar">
+
+<button id="setupBackBtn">
+⬅ Back
+</button>
+
+<h2>Match Setup</h2>
+
+</div>
+
+<div class="setupContainer">
+
+<h3>Select Overs</h3>
+
+<div class="oversGrid">
+
+<button class="overBtn active" data-over="2">
+2 Overs
+</button>
+
+<button class="overBtn" data-over="5">
+5 Overs
+</button>
+
+<button class="overBtn" data-over="10">
+10 Overs
+</button>
+
+<button class="overBtn" data-over="20">
+20 Overs
+</button>
+
+</div>
+
+<h3>Difficulty</h3>
+
+<div class="difficultyGrid">
+
+<button
+class="difficultyBtn active"
+data-level="Easy">
+
+Easy
+
+</button>
+
+<button
+class="difficultyBtn"
+data-level="Medium">
+
+Medium
+
+</button>
+
+<button
+class="difficultyBtn"
+data-level="Hard">
+
+Hard
+
+</button>
+
+</div>
+
+<div class="setupButtons">
+
+<button id="tossPageBtn">
+
+🪙 GO TO TOSS
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- TOSS SCREEN -->
+<!-- ========================= -->
+
+<section id="tossScreen" class="screen">
+
+<div class="topBar">
+
+<button id="tossBackBtn">
+
+⬅ Back
+
+</button>
+
+<h2>Toss</h2>
+
+</div>
+
+<div class="tossContainer">
+
+<img
+src="images/coin.png"
+id="coin"
+class="coin"
+alt="Coin">
+
+<h2>
+
+Choose Head or Tail
+
+</h2>
+
+<div class="tossButtons">
+
+<button id="headBtn">
+
+HEAD
+
+</button>
+
+<button id="tailBtn">
+
+TAIL
+
+</button>
+
+</div>
+
+<h2 id="tossResult">
+
+Waiting For Toss...
+
+</h2>
+
+<div
+id="batBowlChoice"
+style="display:none;">
+
+<h3>
+
+You won the toss
+
+</h3>
+
+<button id="batFirstBtn">
+
+🏏 BAT FIRST
+
+</button>
+
+<button id="bowlFirstBtn">
+
+🥎 BOWL FIRST
+
+</button>
+
+</div>
+
+<button
+id="startMatchBtn"
+style="display:none;">
+
+▶ START MATCH
+
+</button>
+
+</div>
+
+</section><!-- ========================= -->
+<!-- MATCH SCREEN -->
+<!-- ========================= -->
+
+<section id="matchScreen" class="screen">
+
+<div class="matchTopBar">
+
+<button id="matchBackBtn">
+
+⬅ Exit
+
+</button>
+
+<h2>
+
+LIVE MATCH
+
+</h2>
+
+</div>
+
+<div class="scoreBoard">
+
+<div class="scoreCard">
+
 <h3>Runs</h3>
-<p id="runs">0/0</p>
+
+<p id="scoreRuns">
+
+0/0
+
+</p>
+
 </div>
 
-<div>
+<div class="scoreCard">
+
 <h3>Overs</h3>
-<p id="overs">0.0</p>
+
+<p id="scoreOvers">
+
+0.0
+
+</p>
+
 </div>
 
-<div>
+<div class="scoreCard">
+
 <h3>Target</h3>
-<p>30</p>
+
+<p id="targetScore">
+
+--
+
+</p>
+
+</div>
+
+<div class="scoreCard">
+
+<h3>Innings</h3>
+
+<p id="inningsNo">
+
+1
+
+</p>
+
 </div>
 
 </div>
 
 <div class="ground">
 
-<div class="batsmanArea">
+<img
+src="images/stadium.jpg"
+class="stadiumBg">
 
-<img src="images/batsman.png" class="playerImg">
+<div class="pitch"></div>
 
-<h2 id="batName">Ajay</h2>
+<img
+src="images/bowler.png"
+id="bowlerImage"
+class="bowlerImage">
 
-</div>
+<div
+class="playerName bowlerName"
+id="bowlerName">
 
-<div class="pitch">
-
-<div class="crease topCrease"></div>
-
-<div class="ball" id="ball"></div>
-
-<div class="crease bottomCrease"></div>
-
-</div>
-
-<div class="bowlerArea">
-
-<h2 id="bowlName">Umesh</h2>
-
-<img src="images/bowler.png" class="playerImg">
-
-<button id="bowlBtn">
-🥎 BOWL
-</button>
+Bowler
 
 </div>
 
+<div
+id="ball"
+class="ball">
+
 </div>
 
-<div class="shotButtons">
+<img
+src="images/batsman.png"
+id="batsmanImage"
+class="batsmanImage">
 
-<button>DEFEND</button>
+<div
+class="playerName batsmanName"
+id="batsmanName">
 
-<button>DRIVE</button>
-
-<button>PULL</button>
-
-<button>LOFT</button>
+Batsman
 
 </div>
 
 </div>
 
-<div class="toss" id="tossPage">
+<div class="commentaryBox">
 
-<h2>🪙 TOSS</h2>
+<h2 id="ballResult">
 
-<p>Choose Head or Tail</p>
+Ready...
 
-<div class="coin">🪙</div>
-
-<div class="tossButtons">
-
-<button id="headBtn">HEAD</button>
-
-<button id="tailBtn">TAIL</button>
-
-</div>
-
-<h3 id="tossResult"></h3>
-
-<button id="startBtn" style="display:none;">
-🏏 START MATCH
-</button>
-
-</div><!-- Match Setup -->
-<div id="matchSetup" class="screen">
-
-    <h2>Select Overs</h2>
-
-    <div class="overs-box">
-        <button class="overBtn" data-over="2">2 Overs</button>
-        <button class="overBtn" data-over="5">5 Overs</button>
-        <button class="overBtn" data-over="10">10 Overs</button>
-        <button class="overBtn" data-over="20">20 Overs</button>
-    </div>
-
-    <br>
-
-    <button id="startMatchBtn">Start Match</button>
-    <button id="backHomeBtn">⬅ Back</button>
-
-</div><div class="scoreboard">
-
-<h2>HATWA CRICKET CLUB</h2>
-
-<p>Innings :
-<span id="inningsText">1</span></p>
-
-<p>Runs :
-<span id="runs">0</span>/<span id="wickets">0</span></p>
-
-<p>Overs :
-<span id="overs">0.0</span></p>
-
-<p>Target :
-<span id="target">--</span></p>
-
-</div><div id="resultScreen" class="screen">
-
-<h1 id="winnerText"></h1>
-
-<button id="playAgain">
-Play Again
-</button>
-
-<button id="homeBtn">
-Home
-</button>
-
-</div><div class="commentaryBox">
-
-<h3 id="ballResult">
-Press BAT
-</h3>
+</h2>
 
 <p id="commentary">
-Match Started
+
+Welcome To Hatwa Cricket Club
+
 </p>
 
 </div>
 
-<button id="shotBtn">
-🏏 BAT
+<div class="shotPanel">
+
+<button
+class="shotBtn"
+data-shot="Drive">
+
+🏏 DRIVE
+
 </button>
+
+<button
+class="shotBtn"
+data-shot="Cut">
+
+✂ CUT
+
+</button>
+
+<button
+class="shotBtn"
+data-shot="Pull">
+
+💥 PULL
+
+</button>
+
+<button
+class="shotBtn"
+data-shot="Loft">
+
+🚀 LOFT
+
+</button>
+
+</div>
+
+<div class="matchInfo">
+
+<p>
+
+CRR :
+<span id="crr">
+
+0.00
+
+</span>
+
+</p>
+
+<p>
+
+Need :
+<span id="needRuns">
+
+--
+
+</span>
+
+</p>
+
+<p>
+
+Balls Left :
+<span id="ballsLeft">
+
+--
+
+</span>
+
+</p>
+
+<p>
+
+RRR :
+<span id="rrr">
+
+0.00
+
+</span>
+
+</p>
+
+</div>
+
+</section><!-- ========================= -->
+<!-- RESULT SCREEN -->
+<!-- ========================= -->
+
+<section id="resultScreen" class="screen">
+
+<div class="resultContainer">
+
+<img
+src="images/trophy.png"
+class="trophyImage"
+alt="Trophy">
+
+<h1 id="winnerTitle">
+
+🏆 Match Finished
+
+</h1>
+
+<div class="finalScoreBoard">
+
+<div class="resultCard">
+
+<h3>Team 1</h3>
+
+<p id="team1Score">
+
+0/0
+
+</p>
+
+</div>
+
+<div class="resultCard">
+
+<h3>Team 2</h3>
+
+<p id="team2Score">
+
+0/0
+
+</p>
+
+</div>
+
+</div>
+
+<div class="resultButtons">
+
+<button id="playAgainBtn">
+
+🔄 PLAY AGAIN
+
+</button>
+
+<button id="homeResultBtn">
+
+🏠 HOME
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- SETTINGS -->
+<!-- ========================= -->
+
+<section id="settingsScreen" class="screen">
+
+<div class="topBar">
+
+<button id="settingBackBtn">
+
+⬅ Back
+
+</button>
+
+<h2>
+
+Settings
+
+</h2>
+
+</div>
+
+<div class="settingsContainer">
+
+<div class="settingItem">
+
+<label>🔊 Sound</label>
+
+<input
+type="checkbox"
+id="soundToggle"
+checked>
+
+</div>
+
+<div class="settingItem">
+
+<label>🎵 Crowd</label>
+
+<input
+type="checkbox"
+id="crowdToggle"
+checked>
+
+</div>
+
+<div class="settingItem">
+
+<label>📳 Vibration</label>
+
+<input
+type="checkbox"
+id="vibrationToggle"
+checked>
+
+</div>
+
+<div class="settingItem">
+
+<label>🌙 Dark Mode</label>
+
+<input
+type="checkbox"
+id="darkToggle">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- ABOUT -->
+<!-- ========================= -->
+
+<section id="aboutScreen" class="screen">
+
+<div class="topBar">
+
+<button id="aboutBackBtn">
+
+⬅ Back
+
+</button>
+
+<h2>
+
+About
+
+</h2>
+
+</div>
+
+<div class="aboutContainer">
+
+<img
+src="images/logo.png"
+class="aboutLogo">
+
+<h2>
+
+Hatwa Cricket Club V2
+
+</h2>
+
+<p>
+
+Made By
+
+<b>Ajay Yadav</b>
+
+</p>
+
+<p>
+
+Professional Mobile Cricket Game
+
+</p>
+
+<ul>
+
+<li>🏏 Live Cricket</li>
+
+<li>🏆 Tournament</li>
+
+<li>👥 Player Selection</li>
+
+<li>🪙 Toss System</li>
+
+<li>📊 Live Scoreboard</li>
+
+<li>📱 Mobile Friendly</li>
+
+<li>🎵 Sound Effects</li>
+
+<li>🌙 Dark Mode</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- MATCH HISTORY -->
+<!-- ========================= -->
+
+<section id="historyScreen" class="screen">
+
+<div class="topBar">
+
+<button id="historyBackBtn">
+
+⬅ Back
+
+</button>
+
+<h2>
+
+Match History
+
+</h2>
+
+</div>
+
+<div
+id="historyList"
+class="historyContainer">
+
+<p>
+
+No Match Played Yet
+
+</p>
+
+</div>
+
+</section>
+
+</div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
