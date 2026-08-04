@@ -1,450 +1,315 @@
-/* ==========================================
-   HATWA CRICKET CLUB
+/* =====================================
+   HATWA CRICKET CLUB V2
    Made By Ajay Yadav
-   script.js Part 1
-========================================== */
+===================================== */
 
+// ==========================
+// Screens
+// ==========================
 
-// ============================
-// SCREEN CONTROL
-// ============================
-document.addEventListener("DOMContentLoaded", function(){
+const screens = document.querySelectorAll(".screen");
 
+function showScreen(id){
+
+    screens.forEach(screen=>{
+        screen.classList.remove("active");
+    });
+
+    const page = document.getElementById(id);
+
+    if(page){
+        page.classList.add("active");
+    }else{
+        console.error(id + " screen not found");
+    }
+
+}
+
+// ==========================
+// Buttons
+// ==========================
 
 const playBtn = document.getElementById("playBtn");
+const tournamentBtn = document.getElementById("tournamentBtn");
+const historyBtn = document.getElementById("historyBtn");
+const settingBtn = document.getElementById("settingBtn");
+const aboutBtn = document.getElementById("aboutBtn");
 
+const playerBackBtn = document.getElementById("playerBackBtn");
+const playerNextBtn = document.getElementById("playerNextBtn");
 
-playBtn.onclick = function(){
+const setupBackBtn = document.getElementById("setupBackBtn");
+const tossPageBtn = document.getElementById("tossPageBtn");
+
+const tossBackBtn = document.getElementById("tossBackBtn");
+
+const historyBackBtn = document.getElementById("historyBackBtn");
+const aboutBackBtn = document.getElementById("aboutBackBtn");
+const settingBackBtn = document.getElementById("settingBackBtn");
+
+// ==========================
+// Home
+// ==========================
+
+playBtn.onclick = ()=>{
 
     showScreen("playerScreen");
 
 };
 
+tournamentBtn.onclick = ()=>{
 
-
-function showScreen(id){
-
-    document.querySelectorAll(".screen").forEach(screen=>{
-
-        screen.classList.remove("active");
-
-    });
-
-
-    document.getElementById(id).classList.add("active");
-
-}
-
-
-});
-const screens = document.querySelectorAll(".screen");
-
-
-function showScreen(id){
-
-    screens.forEach(screen=>{
-
-        screen.classList.remove("active");
-
-    });
-
-
-    document.getElementById(id)
-    .classList.add("active");
-
-}
-
-
-
-// ============================
-// HOME BUTTONS
-// ============================
-document.getElementById("playerNextBtn")
-.onclick=function(){
-
-    let batsman =
-    document.getElementById("batsmanSelect").value;
-
-
-    let bowler =
-    document.getElementById("bowlerSelect").value;
-
-
-    if(batsman=="" || bowler==""){
-
-        alert("Please Select Players");
-
-        return;
-
-    }
-
-
-    // Name show
-
-    document.getElementById("batsmanImage")
-    .alt=batsman;
-
-
-    document.getElementById("bowlerImage")
-    .alt=bowler;
-
-
-    showScreen("setupScreen");
+    alert("Tournament Coming Soon");
 
 };
 
+historyBtn.onclick = ()=>{
 
+    showScreen("historyScreen");
 
-// ============================
-// PLAYER SCREEN
-// ============================
+};
 
+settingBtn.onclick = ()=>{
 
-document.getElementById("playerBackBtn")
-.onclick=function(){
+    showScreen("settingsScreen");
+
+};
+
+aboutBtn.onclick = ()=>{
+
+    showScreen("aboutScreen");
+
+};
+
+// ==========================
+// Back Buttons
+// ==========================
+
+playerBackBtn.onclick = ()=>{
 
     showScreen("homeScreen");
 
 };
 
-
-
-document.getElementById("playerNextBtn")
-.onclick=function(){
-
-    let batsman =
-    document.getElementById("batsmanSelect").value;
-
-
-    let bowler =
-    document.getElementById("bowlerSelect").value;
-
-
-    if(batsman=="" || bowler==""){
-
-        alert("Please Select Players");
-
-        return;
-
-    }
-
-
-    document.getElementById("batsmanImage")
-    .src="images/batsman.png";
-
-
-    document.getElementById("bowlerImage")
-    .src="images/bowler.png";
-
-
-    showScreen("setupScreen");
-
-
-};
-
-
-
-// ============================
-// SETUP SCREEN
-// ============================
-
-
-document.getElementById("setupBackBtn")
-.onclick=function(){
+setupBackBtn.onclick = ()=>{
 
     showScreen("playerScreen");
 
 };
 
-
-
-let selectedOvers = 2;
-
-let difficulty="Easy";
-
-
-
-document.querySelectorAll(".overBtn")
-.forEach(btn=>{
-
-
-    btn.onclick=function(){
-
-
-        document.querySelectorAll(".overBtn")
-        .forEach(b=>b.classList.remove("active"));
-
-
-        this.classList.add("active");
-
-
-        selectedOvers =
-        Number(this.dataset.over);
-
-
-    };
-
-
-});
-
-
-
-document.querySelectorAll(".difficultyBtn")
-.forEach(btn=>{
-
-
-    btn.onclick=function(){
-
-
-        document.querySelectorAll(".difficultyBtn")
-        .forEach(b=>b.classList.remove("active"));
-
-
-        this.classList.add("active");
-
-
-        difficulty =
-        this.dataset.level;
-
-
-    };
-
-
-});
-
-
-
-// ============================
-// TOSS PAGE
-// ============================
-
-
-document.getElementById("tossPageBtn")
-.onclick=function(){
-
-    showScreen("tossScreen");
-
-};
-
-
-
-document.getElementById("tossBackBtn")
-.onclick=function(){
+tossBackBtn.onclick = ()=>{
 
     showScreen("setupScreen");
 
-};/* ==========================================
-   TOSS SYSTEM
-   script.js Part 2
-========================================== */
+};
 
+historyBackBtn.onclick = ()=>{
 
-let tossWinner = "";
+    showScreen("homeScreen");
 
-let playerChoice = "";
+};
 
+aboutBackBtn.onclick = ()=>{
 
+    showScreen("homeScreen");
 
-// ============================
-// TOSS FUNCTION
-// ============================
+};
 
+settingBackBtn.onclick = ()=>{
+
+    showScreen("homeScreen");
+
+};
+
+// ==========================
+// Player Next
+// ==========================
+
+playerNextBtn.onclick = ()=>{
+
+    const batsman =
+    document.getElementById("batsmanSelect").value;
+
+    const bowler =
+    document.getElementById("bowlerSelect").value;
+
+    if(batsman===""){
+
+        alert("Select Batsman");
+
+        return;
+
+    }
+
+    if(bowler===""){
+
+        alert("Select Bowler");
+
+        return;
+
+    }
+
+    localStorage.setItem("batsman",batsman);
+    localStorage.setItem("bowler",bowler);
+
+    document.getElementById("batsmanName").innerText=batsman;
+
+    document.getElementById("bowlerName").innerText=bowler;
+
+    showScreen("setupScreen");
+
+};
+
+// ==========================
+// Setup
+// ==========================
+
+tossPageBtn.onclick=()=>{
+
+    showScreen("tossScreen");
+
+};// ==========================
+// Match Setup
+// ==========================
+
+let totalOvers=2;
+
+let difficulty="Easy";
+
+const overBtns=document.querySelectorAll(".overBtn");
+
+overBtns.forEach(btn=>{
+
+btn.onclick=function(){
+
+overBtns.forEach(x=>x.classList.remove("active"));
+
+this.classList.add("active");
+
+totalOvers=parseInt(this.dataset.over);
+
+};
+
+});
+
+const difficultyBtns=document.querySelectorAll(".difficultyBtn");
+
+difficultyBtns.forEach(btn=>{
+
+btn.onclick=function(){
+
+difficultyBtns.forEach(x=>x.classList.remove("active"));
+
+this.classList.add("active");
+
+difficulty=this.dataset.level;
+
+};
+
+});
+
+console.log("Overs :",totalOvers);
+
+console.log("Difficulty :",difficulty);// =====================================
+// TOSS SYSTEM
+// =====================================
+
+const coin = document.getElementById("coin");
+
+const headBtn = document.getElementById("headBtn");
+const tailBtn = document.getElementById("tailBtn");
+
+const tossResult = document.getElementById("tossResult");
+
+const batBowlChoice = document.getElementById("batBowlChoice");
+
+const batFirstBtn = document.getElementById("batFirstBtn");
+const bowlFirstBtn = document.getElementById("bowlFirstBtn");
+
+const startMatchBtn = document.getElementById("startMatchBtn");
+
+let playerBatting = true;
+
+let tossDone = false;
 
 function playToss(choice){
 
+if(tossDone) return;
 
-    let coin =
-    document.getElementById("coin");
+tossDone = true;
 
+coin.classList.add("spin");
 
-    coin.classList.add("spin");
+headBtn.disabled = true;
+tailBtn.disabled = true;
 
+setTimeout(()=>{
 
+coin.classList.remove("spin");
 
-    setTimeout(()=>{
+const result = Math.random()<0.5 ? "HEAD":"TAIL";
 
+if(choice===result){
 
-        coin.classList.remove("spin");
+tossResult.innerHTML="🎉 You Won The Toss";
 
+batBowlChoice.style.display="block";
 
-        let result =
-        Math.random()>0.5 ? "HEAD" : "TAIL";
+}else{
 
+tossResult.innerHTML="😔 Computer Won The Toss";
 
+playerBatting=Math.random()<0.5;
 
-        if(choice===result){
-
-
-            tossWinner="You";
-
-
-            document.getElementById("tossResult")
-            .innerHTML =
-            "🎉 You Won The Toss";
-
-
-            document.getElementById("batBowlChoice")
-            .style.display="block";
-
-
-        }
-
-        else{
-
-
-            tossWinner="Computer";
-
-
-            document.getElementById("tossResult")
-            .innerHTML =
-            "😔 Computer Won The Toss";
-
-
-            // Computer automatic decision
-
-            setTimeout(()=>{
-
-
-                startMatch("Computer");
-
-
-            },1500);
-
-
-        }
-
-
-
-    },1000);
-
-
+startMatchBtn.style.display="block";
 
 }
 
+},2000);
 
+}
 
-// ============================
-// HEAD TAIL BUTTON
-// ============================
+headBtn.onclick=()=>{
 
-
-document.getElementById("headBtn")
-.onclick=function(){
-
-    playToss("HEAD");
+playToss("HEAD");
 
 };
 
+tailBtn.onclick=()=>{
 
-
-document.getElementById("tailBtn")
-.onclick=function(){
-
-    playToss("TAIL");
+playToss("TAIL");
 
 };
 
+batFirstBtn.onclick=()=>{
 
+playerBatting=true;
 
-// ============================
-// BAT/BOWL CHOICE
-// ============================
+batBowlChoice.style.display="none";
 
-
-document.getElementById("batFirstBtn")
-.onclick=function(){
-
-
-    playerChoice="Bat";
-
-
-    document.getElementById("startMatchBtn")
-    .style.display="block";
-
+startMatchBtn.style.display="block";
 
 };
 
+bowlFirstBtn.onclick=()=>{
 
+playerBatting=false;
 
-document.getElementById("bowlFirstBtn")
-.onclick=function(){
+batBowlChoice.style.display="none";
 
-
-    playerChoice="Bowl";
-
-
-    document.getElementById("startMatchBtn")
-    .style.display="block";
-
+startMatchBtn.style.display="block";
 
 };
 
+startMatchBtn.onclick=()=>{
 
+showScreen("matchScreen");
 
-// ============================
-// START MATCH
-// ============================
+startMatch();
 
-
-document.getElementById("startMatchBtn")
-.onclick=function(){
-
-
-    startMatch();
-
-
-};
-
-
-
-
-
-function startMatch(){
-
-
-    showScreen("matchScreen");
-
-
-
-    document.getElementById("inningsNo")
-    .innerHTML="1";
-
-
-
-    document.getElementById("scoreRuns")
-    .innerHTML="0/0";
-
-
-
-    document.getElementById("scoreOvers")
-    .innerHTML="0.0";
-
-
-
-    document.getElementById("targetScore")
-    .innerHTML="--";
-
-
-
-    document.getElementById("ballResult")
-    .innerHTML=
-    "Match Started 🏏";
-
-
-
-    document.getElementById("commentary")
-    .innerHTML=
-    "First innings begins";
-
-
-
-}/* ==========================================
-   BATTING ENGINE
-   script.js Part 3
-========================================== */
-
-
+};// =====================================
 // MATCH VARIABLES
+// =====================================
 
 let runs = 0;
 
@@ -452,1545 +317,620 @@ let wickets = 0;
 
 let balls = 0;
 
-let innings = 1;
-
 let target = 0;
 
+let innings = 1;
 
+let maxBalls = totalOvers * 6;
 
-// Possible outcomes
+const runText = document.getElementById("scoreRuns");
 
-const ballOutcomes = [
+const overText = document.getElementById("scoreOvers");
 
-0,1,2,3,4,6,"W"
+const targetText = document.getElementById("targetScore");
 
-];
+const inningsText = document.getElementById("inningsNo");
 
+const resultText = document.getElementById("ballResult");
 
+const commentary = document.getElementById("commentary");
 
-// ============================
-// PLAY BALL
-// ============================
+const crr = document.getElementById("crr");
 
+const needRuns = document.getElementById("needRuns");
 
-function playBall(shot){
+const ballsLeft = document.getElementById("ballsLeft");
 
+const rrr = document.getElementById("rrr");
 
-    // Ball Animation
+const ball = document.getElementById("ball");
 
-    let ball =
-    document.getElementById("ball");
+const shotBtns = document.querySelectorAll(".shotBtn");
 
+function startMatch(){
 
-    ball.classList.remove("move");
+runs = 0;
 
+wickets = 0;
 
-    void ball.offsetWidth;
+balls = 0;
 
+target = 0;
 
-    ball.classList.add("move");
+innings = 1;
 
+maxBalls = totalOvers * 6;
 
+updateScore();
 
-    setTimeout(()=>{
+commentary.innerHTML="🏏 Match Started";
 
-
-        let result =
-        ballOutcomes[
-        Math.floor(Math.random()*ballOutcomes.length)
-        ];
-
-
-
-        // BAT ANIMATION
-
-        let bat =
-        document.getElementById("batsmanImage");
-
-
-        bat.classList.add("hit");
-
-
-        setTimeout(()=>{
-
-            bat.classList.remove("hit");
-
-        },400);
-
-
-
-        if(result==="W"){
-
-
-            wickets++;
-
-
-            document.getElementById("ballResult")
-            .innerHTML="❌ WICKET!";
-
-
-            document.getElementById("commentary")
-            .innerHTML=
-            "Great delivery by bowler";
-
-
-        }
-
-        else{
-
-
-            runs += result;
-
-
-
-            if(result===6){
-
-
-                document.getElementById("ballResult")
-                .innerHTML=
-                "🚀 SIX!!!";
-
-
-            }
-
-
-            else if(result===4){
-
-
-                document.getElementById("ballResult")
-                .innerHTML=
-                "🏏 FOUR!!!";
-
-
-            }
-
-
-            else{
-
-
-                document.getElementById("ballResult")
-                .innerHTML=
-                result+" Runs";
-
-
-            }
-
-
-
-            document.getElementById("commentary")
-            .innerHTML=
-            "Shot: "+shot;
-
-
-
-        }
-
-
-
-        balls++;
-
-
-
-        updateScore();
-
-
-
-        checkInnings();
-
-
-
-    },800);
-
-
-
-}
-
-
-
-// ============================
-// SHOT BUTTONS
-// ============================
-
-
-document.querySelectorAll(".shotBtn")
-.forEach(btn=>{
-
-
-    btn.onclick=function(){
-
-
-        let shot =
-        this.dataset.shot;
-
-
-        playBall(shot);
-
-
-    };
-
-
-});
-
-
-
-// ============================
+}// =====================================
 // SCORE UPDATE
-// ============================
-
+// =====================================
 
 function updateScore(){
 
+runText.innerHTML = runs + "/" + wickets;
 
+overText.innerHTML =
+Math.floor(balls/6) + "." + (balls%6);
 
-    document.getElementById("scoreRuns")
-    .innerHTML =
-    runs+"/"+wickets;
+inningsText.innerHTML = innings;
 
+if(target>0){
 
+targetText.innerHTML = target;
 
-    let over =
-    Math.floor(balls/6);
+needRuns.innerHTML =
+Math.max(target-runs,0);
 
+ballsLeft.innerHTML =
+maxBalls-balls;
 
+let left=maxBalls-balls;
 
-    let ball =
-    balls%6;
+if(left>0){
 
-
-
-    document.getElementById("scoreOvers")
-    .innerHTML =
-    over+"."+ball;
-
-
-
-}/* ==========================================
-   INNINGS & RESULT SYSTEM
-   script.js Part 4
-========================================== */
-
-
-let team1Score = 0;
-
-let team2Score = 0;
-
-let maxBalls = 0;
-
-
-
-// ============================
-// CHECK INNINGS
-// ============================
-
-
-function checkInnings(){
-
-
-    maxBalls = selectedOvers * 6;
-
-
-
-    // First innings end
-
-    if(innings===1){
-
-
-        if(balls>=maxBalls || wickets>=10){
-
-
-            team1Score = runs;
-
-
-            target = team1Score + 1;
-
-
-
-            startSecondInnings();
-
-
-        }
-
-
-    }
-
-
-
-    // Second innings
-
-    else{
-
-
-        if(runs>=target){
-
-
-            showResult(
-            "🎉 Team 2 Won!"
-            );
-
-
-        }
-
-
-        else if(balls>=maxBalls || wickets>=10){
-
-
-            team2Score = runs;
-
-
-            if(team2Score===team1Score){
-
-
-                showResult(
-                "🤝 Match Tie"
-                );
-
-
-            }
-
-            else{
-
-
-                showResult(
-                "🏆 Team 1 Won!"
-                );
-
-
-            }
-
-        }
-
-    }
-
+rrr.innerHTML=
+((target-runs)/left*6).toFixed(2);
 
 }
 
+}else{
 
+targetText.innerHTML="--";
 
+needRuns.innerHTML="--";
 
-// ============================
-// SECOND INNINGS
-// ============================
+ballsLeft.innerHTML=maxBalls-balls;
 
+rrr.innerHTML="0.00";
 
-function startSecondInnings(){
+}
 
+crr.innerHTML=
+balls===0 ? "0.00" :
+(runs/balls*6).toFixed(2);
 
-    innings=2;
+}// =====================================
+// BALL ANIMATION + SHOT LOGIC
+// =====================================
 
+const outcomes = [0,1,2,3,4,6,"W"];
 
-    runs=0;
+const comments = {
 
-    wickets=0;
+0:"Dot Ball!",
+1:"Quick Single!",
+2:"Excellent Running!",
+3:"Great Running Between Wickets!",
+4:"FOUR!! Beautiful Shot!",
+6:"SIX!! What A Hit!",
+W:"OUT!!"
 
-    balls=0;
+};
 
+function bowlBall(shot){
 
+ball.style.display="block";
 
-    document.getElementById("inningsNo")
-    .innerHTML="2";
+ball.style.top="90px";
 
+ball.style.left="50%";
 
+let pos=90;
 
-    document.getElementById("targetScore")
-    .innerHTML=target;
+const timer=setInterval(()=>{
 
+pos+=8;
 
+ball.style.top=pos+"px";
 
-    document.getElementById("ballResult")
-    .innerHTML=
-    "Second Innings Started 🏏";
+if(pos>=250){
 
+clearInterval(timer);
 
+ball.style.display="none";
 
-    document.getElementById("commentary")
-    .innerHTML=
-    "Target: "+target+" Runs";
+finishBall(shot);
 
+}
+
+},20);
+
+}
+
+function finishBall(shot){
+
+let chance=Math.random();
+
+let result;
+
+if(difficulty==="Easy"){
+
+if(chance<0.10){
+
+result="W";
+
+}else{
+
+result=outcomes[Math.floor(Math.random()*6)];
+
+}
+
+}
+
+else if(difficulty==="Medium"){
+
+if(chance<0.18){
+
+result="W";
+
+}else{
+
+result=outcomes[Math.floor(Math.random()*6)];
+
+}
+
+}
+
+else{
+
+if(chance<0.28){
+
+result="W";
+
+}else{
+
+result=outcomes[Math.floor(Math.random()*6)];
+
+}
+
+}
+
+balls++;
+
+if(result==="W"){
+
+wickets++;
+
+resultText.innerHTML="❌ WICKET";
+
+commentary.innerHTML=comments.W;
+
+}
+
+else{
+
+runs+=result;
+
+resultText.innerHTML=result;
+
+commentary.innerHTML=comments[result];
+
+}
+
+updateScore();
+
+checkMatch();
+
+}// =====================================
+// SHOT BUTTONS
+// =====================================
+
+shotBtns.forEach(btn=>{
+
+btn.onclick=function(){
+
+if(ball.style.display==="block") return;
+
+const shot=this.dataset.shot;
+
+commentary.innerHTML=
+
+"Batsman Played "+shot+" Shot";
+
+bowlBall(shot);
+
+};
+
+});// =====================================
+// MATCH END
+// =====================================
+
+function checkMatch(){
+
+// First Innings Finish
+
+if(innings===1){
+
+if(wickets>=10 || balls>=maxBalls){
+
+target=runs+1;
+
+innings=2;
+
+runs=0;
+
+wickets=0;
+
+balls=0;
+
+playerBatting=!playerBatting;
+
+commentary.innerHTML=
+
+"🏏 Second Innings Started";
+
+updateScore();
+
+return;
+
+}
+
+}
+
+// Second Innings
+
+if(innings===2){
+
+if(runs>=target){
+
+matchFinish("🎉 YOU WIN");
+
+return;
+
+}
+
+if(wickets>=10 || balls>=maxBalls){
+
+if(runs>=target){
+
+matchFinish("🎉 YOU WIN");
+
+}else{
+
+matchFinish("😔 COMPUTER WINS");
+
+}
+
+}
+
+}
+
+}// =====================================
+// RESULT
+// =====================================
+
+function matchFinish(title){
+
+document.getElementById("winnerTitle").innerHTML=title;
+
+document.getElementById("team1Score").innerHTML=
+
+target>0 ?
+
+(target-1)+" Runs"
+
+:
+
+runs+" Runs";
+
+document.getElementById("team2Score").innerHTML=
+
+runs+" Runs";
+
+saveHistory(title);
+
+showScreen("resultScreen");
+
+}
+
+document.getElementById("playAgainBtn").onclick=function(){
+
+location.reload();
+
+};
+
+document.getElementById("homeResultBtn").onclick=function(){
+
+showScreen("homeScreen");
+
+};// =====================================
+// HISTORY
+// =====================================
+
+function saveHistory(result){
+
+let history=
+
+JSON.parse(localStorage.getItem("history")) || [];
+
+history.unshift({
+
+date:new Date().toLocaleString(),
+
+result:result
+
+});
+
+localStorage.setItem(
+
+"history",
+
+JSON.stringify(history)
+
+);
+
+loadHistory();
+
+}
+
+function loadHistory(){
+
+const box=document.getElementById("historyList");
+
+let history=
+
+JSON.parse(localStorage.getItem("history")) || [];
+
+if(history.length===0){
+
+box.innerHTML="<p>No Match Played Yet</p>";
+
+return;
+
+}
+
+box.innerHTML="";
+
+history.forEach(match=>{
+
+box.innerHTML+=`
+
+<div class="historyItem">
+
+<h3>${match.result}</h3>
+
+<p>${match.date}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+loadHistory();
+
+// =====================================
+// DARK MODE
+// =====================================
+
+document.getElementById("darkToggle").onchange=function(){
+
+document.body.classList.toggle("dark");
+
+};// =====================================
+// REAL BOWLING ENGINE
+// =====================================
+
+const runOptions = [0,1,2,3,4,6];
+
+function aiBall(){
+
+    let wicketChance = 10;
+
+    if(difficulty==="Medium") wicketChance = 18;
+
+    if(difficulty==="Hard") wicketChance = 28;
+
+    let random = Math.floor(Math.random()*100);
+
+    if(random < wicketChance){
+
+        return "W";
+
+    }
+
+    return runOptions[Math.floor(Math.random()*runOptions.length)];
+
+}
+
+function playDelivery(){
+
+    ball.style.display="block";
+
+    ball.style.transition="none";
+
+    ball.style.top="90px";
+
+    ball.style.left="50%";
+
+    ball.offsetHeight;
+
+    ball.style.transition="all .6s linear";
+
+    ball.style.top="260px";
+
+    setTimeout(()=>{
+
+        ball.style.display="none";
+
+        let result = aiBall();
+
+        applyResult(result);
+
+    },650);
+
+}// =====================================
+// APPLY RESULT
+// =====================================
+playSound(result);
+function applyResult(result){
+
+    balls++;
+
+    if(result==="W"){
+
+        wickets++;
+
+        resultText.innerHTML="❌ WICKET";
+
+        commentary.innerHTML="Outstanding bowling!";
+
+    }
+
+    else{
+
+        runs += result;
+
+        resultText.innerHTML=result;
+
+        switch(result){
+
+            case 0:
+            commentary.innerHTML="Dot Ball";
+            break;
+
+            case 1:
+            commentary.innerHTML="Single";
+            break;
+
+            case 2:
+            commentary.innerHTML="Two Runs";
+            break;
+
+            case 3:
+            commentary.innerHTML="Three Runs";
+            break;
+
+            case 4:
+            commentary.innerHTML="FOUR!!";
+            break;
+
+            case 6:
+            commentary.innerHTML="SIX!!";
+            break;
+
+        }
+
+    }
 
     updateScore();
 
+    checkMatch();
 
-}
+}// =====================================
+// SHOTS
+// =====================================
 
+shotBtns.forEach(btn=>{
 
+    btn.onclick=function(){
 
+        if(ball.style.display==="block") return;
 
-// ============================
-// RESULT SCREEN
-// ============================
+        const shot=this.dataset.shot;
 
+        commentary.innerHTML="Playing "+shot+"...";
 
-function showResult(message){
-
-
-
-    document.getElementById("winnerTitle")
-    .innerHTML=message;
-
-
-
-    document.getElementById("team1Score")
-    .innerHTML=
-    team1Score;
-
-
-
-    document.getElementById("team2Score")
-    .innerHTML=
-    runs;
-
-
-
-    showScreen("resultScreen");
-
-
-}
-
-
-
-// ============================
-// PLAY AGAIN
-// ============================
-
-
-document.getElementById("playAgainBtn")
-.onclick=function(){
-
-
-    runs=0;
-
-    wickets=0;
-
-    balls=0;
-
-    innings=1;
-
-    target=0;
-
-
-    showScreen("tossScreen");
-
-
-};
-
-
-
-// HOME FROM RESULT
-
-document.getElementById("homeResultBtn")
-.onclick=function(){
-
-
-    showScreen("homeScreen");
-
-
-};/* ==========================================
-   SCORE DETAILS + SETTINGS
-   script.js Part 5
-========================================== */
-
-
-// ============================
-// RUN RATE UPDATE
-// ============================
-
-
-function updateMatchInfo(){
-
-
-    // Current Run Rate
-
-    let crr = 0;
-
-
-    if(balls>0){
-
-        crr =
-        (runs / balls) * 6;
-
-    }
-
-
-
-    document.getElementById("crr")
-    .innerHTML =
-    crr.toFixed(2);
-
-
-
-    // Second innings details
-
-    if(innings===2){
-
-
-        let need =
-        target - runs;
-
-
-        let ballsRemain =
-        (selectedOvers*6)-balls;
-
-
-
-        document.getElementById("needRuns")
-        .innerHTML =
-        need;
-
-
-
-        document.getElementById("ballsLeft")
-        .innerHTML =
-        ballsRemain;
-
-
-
-        let rrr = 0;
-
-
-        if(ballsRemain>0){
-
-            rrr =
-            (need/ballsRemain)*6;
-
-        }
-
-
-
-        document.getElementById("rrr")
-        .innerHTML =
-        rrr.toFixed(2);
-
-
-    }
-
-
-}
-
-
-
-
-// Update old function
-
-let oldUpdateScore = updateScore;
-
-
-
-updateScore = function(){
-
-
-    oldUpdateScore();
-
-
-    updateMatchInfo();
-
-
-};
-
-
-
-
-
-// ============================
-// BETTER COMMENTARY
-// ============================
-
-
-function getCommentary(result){
-
-
-    let text = [
-
-        "Beautiful shot!",
-        "Good timing!",
-        "Excellent bowling!",
-        "What a delivery!",
-        "Crowd goes crazy!",
-        "Great cricket!"
-
-    ];
-
-
-
-    return text[
-        Math.floor(Math.random()*text.length)
-    ];
-
-
-}
-
-
-
-// ============================
-// SETTINGS
-// ============================
-
-
-document.getElementById("settingBackBtn")
-.onclick=function(){
-
-    showScreen("homeScreen");
-
-};
-
-
-
-document.getElementById("aboutBackBtn")
-.onclick=function(){
-
-    showScreen("homeScreen");
-
-};
-
-
-
-
-// ============================
-// DARK MODE
-// ============================
-
-
-document.getElementById("darkToggle")
-.onclick=function(){
-
-
-    document.body.classList.toggle("dark");
-
-
-};/* ==========================================
-   SOUND + EFFECTS + AI SYSTEM
-   script.js Part 6
-========================================== */
-
-
-// ============================
-// SOUND FILES
-// ============================
-
-
-const sounds = {
-
-    bat : new Audio("sounds/bat.mp3"),
-
-    four : new Audio("sounds/four.mp3"),
-
-    six : new Audio("sounds/six.mp3"),
-
-    wicket : new Audio("sounds/wicket.mp3"),
-
-    crowd : new Audio("sounds/crowd.mp3")
-
-};
-
-
-
-// ============================
-// PLAY SOUND
-// ============================
-
-
-function playSound(name){
-
-
-    let sound = sounds[name];
-
-
-    if(sound){
-
-
-        sound.currentTime=0;
-
-
-        sound.play()
-        .catch(()=>{});
-
-
-    }
-
-}
-
-
-
-
-
-// ============================
-// SPECIAL EFFECT
-// ============================
-
-
-function showEffect(text){
-
-
-    let effect =
-    document.createElement("div");
-
-
-    effect.className="gameEffect";
-
-
-    effect.innerHTML=text;
-
-
-    document.body.appendChild(effect);
-
-
-
-    setTimeout(()=>{
-
-
-        effect.remove();
-
-
-    },1200);
-
-
-}
-
-
-
-
-// ============================
-// OVERRIDE PLAY BALL EFFECT
-// ============================
-
-
-let oldPlayBall = playBall;
-
-
-
-playBall = function(shot){
-
-
-    oldPlayBall(shot);
-
-
-
-    setTimeout(()=>{
-
-
-        let resultText =
-        document.getElementById("ballResult")
-        .innerHTML;
-
-
-
-        if(resultText.includes("SIX")){
-
-
-            playSound("six");
-
-            showEffect("🚀 SIX!!!");
-
-        }
-
-
-        else if(resultText.includes("FOUR")){
-
-
-            playSound("four");
-
-            showEffect("🏏 FOUR!!!");
-
-        }
-
-
-        else if(resultText.includes("WICKET")){
-
-
-            playSound("wicket");
-
-            showEffect("❌ WICKET");
-
-        }
-
-
-        else{
-
-
-            playSound("bat");
-
-        }
-
-
-
-        // Vibration
-
-        if(
-        document.getElementById("vibrationToggle")
-        .checked
-        ){
-
-            if(navigator.vibrate){
-
-                navigator.vibrate(100);
-
-            }
-
-        }
-
-
-
-    },900);
-
-
-};
-
-
-
-
-
-// ============================
-// CROWD SOUND
-// ============================
-
-
-document.getElementById("crowdToggle")
-.onclick=function(){
-
-
-    if(this.checked){
-
-
-        playSound("crowd");
-
-
-    }
-
-
-};
-
-
-
-
-
-// ============================
-// SOUND ON/OFF
-// ============================
-
-
-document.getElementById("soundToggle")
-.onclick=function(){
-
-
-    if(!this.checked){
-
-
-        Object.values(sounds)
-        .forEach(sound=>{
-
-
-            sound.pause();
-
-
-        });
-
-
-    }
-
-
-};/* ==========================================
-   AI BOWLER + PLAYER DATA
-   script.js Part 7
-========================================== */
-
-
-// ============================
-// PLAYER NAME VARIABLES
-// ============================
-
-
-let batsmanName = "";
-
-let bowlerName = "";
-
-
-
-
-// ============================
-// SAVE PLAYER DATA
-// ============================
-
-
-function loadPlayers(){
-
-
-    batsmanName =
-    document.getElementById("batsmanSelect")
-    .value;
-
-
-
-    bowlerName =
-    document.getElementById("bowlerSelect")
-    .value;
-
-
-
-    document.getElementById("batsmanImage")
-    .alt = batsmanName;
-
-
-
-    document.getElementById("bowlerImage")
-    .alt = bowlerName;
-
-
-}
-
-
-
-
-
-// Player select ke time
-
-document.getElementById("playerNextBtn")
-.addEventListener("click",()=>{
-
-
-    loadPlayers();
-
-
-});
-
-
-
-
-
-
-// ============================
-// AI DIFFICULTY
-// ============================
-
-
-function aiChance(){
-
-
-    if(difficulty==="Easy"){
-
-
-        return Math.random();
-
-
-    }
-
-
-    else if(difficulty==="Medium"){
-
-
-        return Math.random()*0.7;
-
-
-    }
-
-
-    else{
-
-
-        return Math.random()*0.5;
-
-
-    }
-
-
-}
-
-
-
-
-
-
-// ============================
-// AI BOWLING MESSAGE
-// ============================
-
-
-function bowlingStyle(){
-
-
-    let balls=[
-
-        "Fast Yorker 🥎",
-
-        "Bouncer 🔥",
-
-        "Swing Ball 🌪️",
-
-        "Spin Delivery 🌀",
-
-        "Full Toss"
-
-    ];
-
-
-
-    return balls[
-    Math.floor(Math.random()*balls.length)
-    ];
-
-}
-
-
-
-
-
-// ============================
-// COMMENTARY UPDATE
-// ============================
-
-
-function aiCommentary(){
-
-
-    document.getElementById("commentary")
-    .innerHTML =
-
-    bowlerName+
-    " bowls "+
-
-    bowlingStyle();
-
-
-}
-
-
-
-
-
-
-// ============================
-// BEFORE EVERY BALL
-// ============================
-
-
-let oldBallPlay = playBall;
-
-
-playBall=function(shot){
-
-
-
-    aiCommentary();
-
-
-
-    oldBallPlay(shot);
-
-
-
-};/* ==========================================
-   TOURNAMENT + LOCAL STORAGE
-   script.js Part 8
-========================================== */
-
-
-// ============================
-// TOURNAMENT DATA
-// ============================
-
-
-let tournamentTeams = [
-
-    "Hatwa Warriors",
-    "Prayagraj Kings",
-    "UP Strikers",
-    "Cricket Challengers"
-
-];
-
-
-let currentMatch = 1;
-
-let matchHistory = [];
-
-
-
-
-// ============================
-// LOAD SAVED DATA
-// ============================
-
-
-function loadGameData(){
-
-
-    let data =
-    localStorage.getItem("hatwaHistory");
-
-
-    if(data){
-
-
-        matchHistory =
-        JSON.parse(data);
-
-
-    }
-
-
-}
-
-
-
-
-
-// ============================
-// SAVE MATCH RESULT
-// ============================
-
-
-function saveMatchResult(){
-
-
-    let matchData={
-
-
-        match:
-        currentMatch,
-
-
-        team1:
-        "Hatwa Warriors",
-
-
-        team2:
-        "Opponent",
-
-
-        score1:
-        team1Score,
-
-
-        score2:
-        runs,
-
-
-        date:
-        new Date().toLocaleDateString()
-
+        playDelivery();
 
     };
 
+});// =====================================
+// SOUND
+// =====================================
 
+const batSound=new Audio("sounds/bat.mp3");
 
-    matchHistory.push(matchData);
+const fourSound=new Audio("sounds/four.mp3");
 
+const sixSound=new Audio("sounds/six.mp3");
 
+const wicketSound=new Audio("sounds/wicket.mp3");
 
-    localStorage.setItem(
+function playSound(result){
 
-        "hatwaHistory",
+    if(result==="W"){
 
-        JSON.stringify(matchHistory)
+        wicketSound.play();
 
-    );
-
-
-}
-
-
-
-
-
-
-// ============================
-// UPDATE RESULT FUNCTION
-// ============================
-
-
-let oldShowResult = showResult;
-
-
-
-showResult=function(message){
-
-
-
-    oldShowResult(message);
-
-
-
-    saveMatchResult();
-
-
-
-};
-
-
-
-
-
-
-// ============================
-// SHOW MATCH HISTORY
-// ============================
-
-
-function showHistory(){
-
-
-    let data =
-    document.createElement("div");
-
-
-    data.className="historyBox";
-
-
-
-    if(matchHistory.length===0){
-
-
-        data.innerHTML=
-        "No Match Played";
-
+        return;
 
     }
 
-    else{
+    batSound.play();
 
+    if(result===4){
 
-        data.innerHTML=
-        "<h2>Match History</h2>";
-
-
-
-        matchHistory.forEach(match=>{
-
-
-            data.innerHTML +=
-
-            `
-
-            <p>
-
-            Match ${match.match}
-
-            <br>
-
-            ${match.score1}
-
-            VS
-
-            ${match.score2}
-
-            <br>
-
-            ${match.date}
-
-            </p>
-
-            `;
-
-
-        });
-
+        fourSound.play();
 
     }
 
+    if(result===6){
 
-
-    document.body.appendChild(data);
-
-
-}
-
-
-
-
-loadGameData();/* ==========================================
-   MOBILE CONTROL + FINAL FIX
-   script.js Part 9
-========================================== */
-
-
-// ============================
-// MOBILE TOUCH SHOT
-// ============================
-
-
-let touchStart = 0;
-
-
-document.addEventListener(
-"touchstart",
-function(e){
-
-
-    touchStart =
-    e.touches[0].clientX;
-
-
-});
-
-
-
-document.addEventListener(
-"touchend",
-function(e){
-
-
-    let touchEnd =
-    e.changedTouches[0].clientX;
-
-
-
-    let diff =
-    touchEnd - touchStart;
-
-
-
-    if(Math.abs(diff)>50){
-
-
-
-        if(diff>0){
-
-
-            playBall("drive");
-
-
-        }
-
-        else{
-
-
-            playBall("pull");
-
-
-        }
-
+        sixSound.play();
 
     }
 
-
-});
-
-
-
-
-
-
-// ============================
-// RESTART MATCH
-// ============================
-
-
-function resetMatch(){
-
-
-    runs=0;
-
-    wickets=0;
-
-    balls=0;
-
-    innings=1;
-
-    target=0;
-
-
-    team1Score=0;
-
-    team2Score=0;
-
-
-
-    document.getElementById("scoreRuns")
-    .innerHTML="0/0";
-
-
-
-    document.getElementById("scoreOvers")
-    .innerHTML="0.0";
-
-
-
-    document.getElementById("targetScore")
-    .innerHTML="--";
-
-
-
-    document.getElementById("inningsNo")
-    .innerHTML="1";
-
-
-}
-
-
-
-
-
-// PLAY AGAIN BUTTON UPDATE
-
-
-document.getElementById("playAgainBtn")
-.onclick=function(){
-
-
-    resetMatch();
-
-
-    showScreen("playerScreen");
-
-
-};
-
-
-
-
-
-
-// ============================
-// HOME BUTTON
-// ============================
-
-
-document.getElementById("matchBackBtn")
-.onclick=function(){
-
-
-    let confirmExit =
-    confirm(
-    "Exit current match?"
-    );
-
-
-    if(confirmExit){
-
-
-        showScreen("homeScreen");
-
-
-    }
-
-
-};
-
-
-
-
-
-
-// ============================
-// PREVENT ZOOM ON DOUBLE TAP
-// ============================
-
-
-let lastTouch = 0;
-
-
-document.addEventListener(
-"touchend",
-function(event){
-
-
-    let now =
-    new Date().getTime();
-
-
-
-    if(now-lastTouch<=300){
-
-
-        event.preventDefault();
-
-
-    }
-
-
-
-    lastTouch=now;
-
-
-},
-false);/* ==========================================
-   FINAL SETUP
-   HATWA CRICKET CLUB
-   Made By Ajay Yadav
-========================================== */
-
-
-// ============================
-// CHECK IMAGE LOADING
-// ============================
-
-
-document.querySelectorAll("img")
-.forEach(img=>{
-
-
-    img.onerror=function(){
-
-
-        console.log(
-        "Image missing:",
-        this.src
-        );
-
-
-    };
-
-
-});
-
-
-
-
-// ============================
-// AUTO START SETTINGS
-// ============================
-
+}// =====================================
+// STARTUP
+// =====================================
 
 window.onload=function(){
 
+    loadHistory();
 
     showScreen("homeScreen");
 
-
-    console.log(
-    "🏏 Hatwa Cricket Club Loaded"
-    );
-
+    console.log("Hatwa Cricket Club V2 Loaded");
 
 };
 
+// =====================================
+// SAVE SETTINGS
+// =====================================
 
+const darkToggle=document.getElementById("darkToggle");
 
+darkToggle.checked=
 
-// ============================
-// PLAY BUTTON EFFECT
-// ============================
+localStorage.getItem("dark")=="true";
 
+if(darkToggle.checked){
 
-document.querySelectorAll("button")
-.forEach(btn=>{
+    document.body.classList.add("dark");
 
+}
 
-    btn.addEventListener(
-    "click",
-    function(){
+darkToggle.onchange=function(){
 
+    document.body.classList.toggle("dark");
 
-        this.style.transform="scale(.95)";
-
-
-        setTimeout(()=>{
-
-
-            this.style.transform="";
-
-
-        },100);
-
-
-
-    });
-
-
-});console.log("Script Loaded");
-
-document.getElementById("playerNextBtn").onclick=function(){
-
-    console.log("Next button clicked");
-
-    showScreen("tossScreen");
+    localStorage.setItem("dark",this.checked);
 
 };
